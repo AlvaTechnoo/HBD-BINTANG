@@ -7,15 +7,19 @@ const blowCandlesButton = document.getElementById('blow-candles');
 const memoryGallery = document.getElementById('memory-gallery');
 const playAudioButton = document.getElementById('play-audio');
 const birthdayAudio = document.getElementById('birthday-audio');
+const startButton = document.getElementById('start-button');
+const scoreDisplay = document.getElementById('score-display');
+const rollingPhoto = document.getElementById('rolling-photo');
+const birthdayMessage = document.getElementById('birthday-message');
 
 let score = 0;
+let gameStarted = false;
 
 // Array of memory images
 const memories = [
     'assets/images/memory1.jpg',
     'assets/images/memory2.jpg',
     'assets/images/memory3.jpg',
-    // Add more memory images as needed
 ];
 
 // Function to create gifts
@@ -30,16 +34,24 @@ function createGift() {
     // Add click event to gift
     gift.addEventListener('click', function() {
         score++;
-        alert('You collected a gift! Score: ' + score);
+        scoreDisplay.textContent = 'Score: ' + score;
         giftsContainer.removeChild(gift);
         createGift(); // Create a new gift
     });
 }
 
-// Start the game
-for (let i = 0; i < 5; i++) {
-    createGift();
-}
+// Start the game and play audio
+startButton.addEventListener('click', () => {
+    if (!gameStarted) {
+        birthdayAudio.play();
+        rollingPhoto.style.display = 'block';
+        gameStarted = true;
+        scoreDisplay.style.display = 'block';
+        for (let i = 0; i < 5; i++) {
+            createGift();
+        }
+    }
+});
 
 // Photo upload functionality
 uploadPhotoButton.addEventListener('click', () => {
@@ -63,19 +75,7 @@ photoInput.addEventListener('change', (event) => {
 
 // Blow out candles functionality
 blowCandlesButton.addEventListener('click', () => {
-    const candles = document.createElement('div');
-    candles.textContent = '🎂💨';
-    memoryGallery.appendChild(candles);
-});
-
-// Display memory images
-memories.forEach(memory => {
-    const img = document.createElement('img');
-    img.src = memory;
-    memoryGallery.appendChild(img);
-});
-
-// Play audio functionality
-playAudioButton.addEventListener('click', () => {
-    birthdayAudio.play();
-});
+    birthdayMessage.classList.remove('hidden');
+    birthdayMessage.style.display = 'block';
+    setTimeout(() => {
+        birthdayMessage.style.display
