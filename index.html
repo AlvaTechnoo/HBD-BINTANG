@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Welcome to Bintang's Birthday Adventure!</h1>
+    <button id="start-button" class="start-button">Start Game</button>
+    <div id="rolling-photo"></div>
+    <div id="score-display">Score: 0</div>
     <div id="game-area">
         <div id="player">🎉</div>
         <div id="gifts"></div>
@@ -18,11 +20,10 @@
     
     <button id="blow-candles">Blow Out the Candles 🎂</button>
     <div id="memory-gallery"></div>
+    
+    <div id="birthday-message" class="hidden">Selamat Ulang Tahun Bintang</div>
 
-    <h2>Enjoy Some Birthday Music!</h2>
-    <button id="play-audio">Play Birthday Song</button>
     <audio id="birthday-audio" src="assets/audio/birthday-song.mp3"></audio>
-
     <script src="script.js"></script>
 </body>
 </html>
