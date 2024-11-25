@@ -10,9 +10,9 @@ let score = 0;
 
 // Array of memory images
 const memories = [
-    'memory1.jpg',
-    'memory2.jpg',
-    'memory3.jpg',
+    'assets/images/memory1.jpg',
+    'assets/images/memory2.jpg',
+    'assets/images/memory3.jpg',
     // Add more memory images as needed
 ];
 
@@ -44,34 +44,4 @@ uploadPhotoButton.addEventListener('click', () => {
     photoInput.click();
 });
 
-photoInput.addEventListener('change', (event) => {
-    const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            const img = document.createElement('img');
-            img.src = e.target.result;
-            img.style.width = '100px';
-            img.style.margin = '10px';
-            photoGallery.appendChild(img);
-        }
-        reader.readAsDataURL(file);
-    }
-});
-
-// Blow out candles functionality
-blowCandlesButton.addEventListener('click', () => {
-    alert('🎉 Bintang blew out the candles! 🎉');
-
-    // Show memory pictures
-    memories.forEach(memory => {
-        const img = document.createElement('img');
-        img.src = memory;
-        memoryGallery.appendChild(img);
-    });
-
-    // Play background music
-    const audio = new Audio('background-music.mp3'); // Add your music file
-    audio.loop = true; // Loop the music
-    audio.play();
-});
+photoInput.addEventListener('change
