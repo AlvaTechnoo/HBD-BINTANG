@@ -11,7 +11,7 @@ body {
     border: 2px solid #ffcc00;
     margin: 0 auto;
     overflow: hidden;
-    background-image: url('birthday-background.jpg'); /* Add a birthday-themed background image */
+    background-image: url('assets/images/birthday-background.jpg'); /* Add a birthday-themed background image */
     background-size: cover;
 }
 
