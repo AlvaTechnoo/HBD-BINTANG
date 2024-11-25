@@ -5,6 +5,8 @@ const photoInput = document.getElementById('photo-input');
 const photoGallery = document.getElementById('photo-gallery');
 const blowCandlesButton = document.getElementById('blow-candles');
 const memoryGallery = document.getElementById('memory-gallery');
+const playAudioButton = document.getElementById('play-audio');
+const birthdayAudio = document.getElementById('birthday-audio');
 
 let score = 0;
 
@@ -44,4 +46,36 @@ uploadPhotoButton.addEventListener('click', () => {
     photoInput.click();
 });
 
-photoInput.addEventListener('change
+photoInput.addEventListener('change', (event) => {
+    const files = event.target.files;
+    for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            img.width = 100; // Set image width
+            photoGallery.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+// Blow out candles functionality
+blowCandlesButton.addEventListener('click', () => {
+    const candles = document.createElement('div');
+    candles.textContent = '🎂💨';
+    memoryGallery.appendChild(candles);
+});
+
+// Display memory images
+memories.forEach(memory => {
+    const img = document.createElement('img');
+    img.src = memory;
+    memoryGallery.appendChild(img);
+});
+
+// Play audio functionality
+playAudioButton.addEventListener('click', () => {
+    birthdayAudio.play();
+});
